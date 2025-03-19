@@ -1,4 +1,6 @@
 com\mycompany\group8\blackjack\Group8Blackjack.class
 com\mycompany\group8\blackjack\Card.class
 com\mycompany\group8\blackjack\Deck.class
+com\mycompany\group8\blackjack\Dealer.class
+com\mycompany\group8\blackjack\Player.class
 com\mycompany\group8\blackjack\Hand.class

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hand {
-    private List<Card> cards;
+    private final List<Card> cards;
 
     public Hand() {
         cards = new ArrayList<>();
@@ -27,28 +27,19 @@ public class Hand {
         int aceCount = 0;
 
         for (Card card : cards) {
-            String rank = card.getRank();
-            if ("2".equals(rank)) {
-                value += 2;
-            } else if ("3".equals(rank)) {
-                value += 3;
-            } else if ("4".equals(rank)) {
-                value += 4;
-            } else if ("5".equals(rank)) {
-                value += 5;
-            } else if ("6".equals(rank)) {
-                value += 6;
-            } else if ("7".equals(rank)) {
-                value += 7;
-            } else if ("8".equals(rank)) {
-                value += 8;
-            } else if ("9".equals(rank)) {
-                value += 9;
-            } else if ("10".equals(rank) || "Jack".equals(rank) || "Queen".equals(rank) || "King".equals(rank)) {
-                value += 10;
-            } else if ("Ace".equals(rank)) {
-                value += 11;
-                aceCount++;
+            switch (card.getRank()) {
+                case "2" -> value += 2;
+                case "3" -> value += 3;
+                case "4" -> value += 4;
+                case "5" -> value += 5;
+                case "6" -> value += 6;
+                case "7" -> value += 7;
+                case "8" -> value += 8;
+                case "9" -> value += 9;
+                case "10", "Jack", "Queen", "King" -> value += 10;
+ case "Ace" ->  {
+     value += 11; aceCount++;
+                }
             }
         }
 
@@ -62,10 +53,6 @@ public class Hand {
 
     @Override
     public String toString() {
-        StringBuilder handString = new StringBuilder();
-        for (Card card : cards) {
-            handString.append(card.toString()).append("\n");
-        }
-        return handString.toString();
+        return cards.toString();
     }
 }

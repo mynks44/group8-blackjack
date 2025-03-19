@@ -9,8 +9,8 @@ package com.mycompany.group8.blackjack;
  * @author suran, Mohammed Rizwan, Mir Ali
  */
 public class Card {
-    private String suit;
-    private String rank;
+    private final String suit;
+    private final String rank;
 
     public Card(String suit, String rank) {
         this.suit = suit;
