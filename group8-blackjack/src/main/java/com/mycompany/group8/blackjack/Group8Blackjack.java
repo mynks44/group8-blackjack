@@ -12,104 +12,78 @@ package com.mycompany.group8.blackjack;
 import java.util.Scanner;
 
 public class Group8Blackjack {
-    private Deck deck;
-    private Hand playerHand;
-    private Hand dealerHand;
+    private final Deck deck;
+    private final Player player;
+    private final Dealer dealer;
+    private final Scanner scanner;
 
     public Group8Blackjack() {
         deck = new Deck();
-        playerHand = new Hand();
-        dealerHand = new Hand();
+        player = new Player("Player");
+        dealer = new Dealer();
+        scanner = new Scanner(System.in);
     }
 
     public void dealInitialCards() {
-        playerHand.addCard(deck.deal());
-        playerHand.addCard(deck.deal());
-        dealerHand.addCard(deck.deal());
-        dealerHand.addCard(deck.deal());
+        player.addCard(deck.deal());
+        player.addCard(deck.deal());
+        dealer.addCard(deck.deal());
+        dealer.addCard(deck.deal());
     }
 
-    public void playerHit() {
-        playerHand.addCard(deck.deal());
-    }
-
-    public void dealerHit() {
-        dealerHand.addCard(deck.deal());
-    }
-
-    public boolean playerBusted() {
-        return playerHand.getValue() > 21;
-    }
-
-    public boolean dealerBusted() {
-        return dealerHand.getValue() > 21;
-    }
-
-    public boolean playerWins() {
-        return playerHand.getValue() <= 21 && playerHand.getValue() > dealerHand.getValue();
-    }
-
-    public boolean dealerWins() {
-        return dealerHand.getValue() <= 21 && dealerHand.getValue() > playerHand.getValue();
-    }
-
-    public boolean push() {
-        return playerHand.getValue() == dealerHand.getValue();
-    }
-
-    public void play() {
-        dealInitialCards();
-        Scanner scanner = new Scanner(System.in);
+    public void playerTurn() {
         boolean playerTurn = true;
 
         while (playerTurn) {
-            System.out.println("Player's hand:");
-            System.out.println(playerHand);
-            System.out.println("Player's hand value: " + playerHand.getValue());
-            System.out.println("Dealer's hand:");
-            System.out.println(dealerHand);
-            System.out.println("Dealer's hand value: " + dealerHand.getValue());
+            System.out.println("Player's Hand: " + player.getHand() + " (Value: " + player.getHandValue() + ")");
+            System.out.println("Dealer's Visible Card: " + dealer.getHand().getValue());
 
-            if (playerBusted()) {
+            if (player.getHandValue() > 21) {
                 System.out.println("Player busts! Dealer wins.");
                 return;
             }
 
-            System.out.println("Do you want to hit or stand? (hit/stand)");
-            String decision = scanner.nextLine();
+            System.out.print("Hit or Stand? ");
+            String decision = scanner.nextLine().trim().toLowerCase();
 
-            if ("hit".equalsIgnoreCase(decision)) {
-                playerHit();
-            } else if ("stand".equalsIgnoreCase(decision)) {
+            if (decision.equals("hit")) {
+                player.addCard(deck.deal());
+            } else if (decision.equals("stand")) {
                 playerTurn = false;
             } else {
-                System.out.println("Invalid input. Please type 'hit' or 'stand'.");
+                System.out.println("Invalid input. Type 'hit' or 'stand'.");
             }
-        }
-
-        while (dealerHand.getValue() < 17) {
-            dealerHit();
-        }
-
-        System.out.println("Final hands:");
-        System.out.println("Player's hand:");
-        System.out.println(playerHand);
-        System.out.println("Player's hand value: " + playerHand.getValue());
-        System.out.println("Dealer's hand:");
-        System.out.println(dealerHand);
-        System.out.println("Dealer's hand value: " + dealerHand.getValue());
-
-        if (dealerBusted()) {
-            System.out.println("Dealer busts! Player wins.");
-        } else if (playerWins()) {
-            System.out.println("Player wins!");
-        } else if (dealerWins()) {
-            System.out.println("Dealer wins!");
-        } else if (push()) {
-            System.out.println("It's a push!");
         }
     }
 
+    public void dealerTurn() {
+        while (dealer.shouldHit()) {
+            dealer.addCard(deck.deal());
+        }
+    }
+
+    public void determineWinner() {
+        System.out.println("\nFinal Hands:");
+        System.out.println("Player: " + player.getHand() + " (Value: " + player.getHandValue() + ")");
+        System.out.println("Dealer: " + dealer.getHand() + " (Value: " + dealer.getHandValue() + ")");
+
+        if (dealer.getHandValue() > 21) {
+            System.out.println("Dealer busts! Player wins.");
+        } else if (player.getHandValue() > dealer.getHandValue()) {
+            System.out.println("Player wins!");
+        } else if (player.getHandValue() < dealer.getHandValue()) {
+            System.out.println("Dealer wins!");
+        } else {
+            System.out.println("It's a tie!");
+        }
+    }
+
+    public void play() {
+        dealInitialCards();
+        playerTurn();
+        dealerTurn();
+        determineWinner();
+    }
 
     public static void main(String[] args) {
         Group8Blackjack game = new Group8Blackjack();
