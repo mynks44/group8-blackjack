@@ -9,7 +9,7 @@ package com.mycompany.group8.blackjack;
  * @author suran
  */
 public class Dealer extends Player {
-    private DealerStrategy strategy;
+    private final DealerStrategy strategy;
 
     public Dealer(DealerStrategy strategy) {
         super("Dealer");

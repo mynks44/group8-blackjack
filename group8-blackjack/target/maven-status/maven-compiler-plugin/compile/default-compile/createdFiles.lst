@@ -6,3 +6,4 @@ com\mycompany\group8\blackjack\Deck.class
 com\mycompany\group8\blackjack\DealerStrategy.class
 com\mycompany\group8\blackjack\Player.class
 com\mycompany\group8\blackjack\Hand.class
+com\mycompany\group8\blackjack\HandTest.class
