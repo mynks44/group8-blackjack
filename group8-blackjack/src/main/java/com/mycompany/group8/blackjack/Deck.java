@@ -4,21 +4,29 @@
  */
 package com.mycompany.group8.blackjack;
 
-/**
- *
- * @author suran, Mir Ali, Mohammded Rizwan
- */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *
+ * @author suran, Mir Ali, Mohammded Rizwan
+ */
 public final class Deck {
+    private static Deck instance;
     private final List<Card> cards;
 
-    public Deck() {
+    private Deck() {
         cards = new ArrayList<>();
         build();
         shuffle();
+    }
+
+    public static Deck getInstance() {
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
     }
 
     private void build() {

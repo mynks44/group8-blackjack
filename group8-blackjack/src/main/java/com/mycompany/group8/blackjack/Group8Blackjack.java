@@ -18,9 +18,9 @@ public class Group8Blackjack {
     private final Scanner scanner;
 
     public Group8Blackjack() {
-        deck = new Deck();
+        deck = Deck.getInstance(); 
         player = new Player("Player");
-        dealer = new Dealer();
+        dealer = new Dealer(new SimpleDealerStrategy());
         scanner = new Scanner(System.in);
     }
 
@@ -46,12 +46,10 @@ public class Group8Blackjack {
             System.out.print("Hit or Stand? ");
             String decision = scanner.nextLine().trim().toLowerCase();
 
-            if (decision.equals("hit")) {
-                player.addCard(deck.deal());
-            } else if (decision.equals("stand")) {
-                playerTurn = false;
-            } else {
-                System.out.println("Invalid input. Type 'hit' or 'stand'.");
+            switch (decision) {
+                case "hit" -> player.addCard(deck.deal());
+                case "stand" -> playerTurn = false;
+                default -> System.out.println("Invalid input. Type 'hit' or 'stand'.");
             }
         }
     }
