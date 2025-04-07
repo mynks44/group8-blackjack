@@ -12,6 +12,13 @@ import java.util.List;
  *
  * @author suran, Mir Ali, Mohammded Rizwan
  */
+
+/**
+ * Singleton Design Pattern:
+ * - Ensures only one deck exists (shared by dealer & player).
+ * - Private constructor + static getInstance().
+ */
+
 // Singleton Pattern: Only one instance of Deck is allowed
 public final class Deck {
     private static Deck instance;

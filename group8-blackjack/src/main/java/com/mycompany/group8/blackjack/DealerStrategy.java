@@ -8,6 +8,12 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+
+/**
+ * Strategy Design Pattern:
+ * - Abstraction for dealer behavior.
+ */
+
 // Strategy Pattern Interface: abstraction for dealer decision logic
 public interface DealerStrategy {
     boolean shouldHit(Hand hand);

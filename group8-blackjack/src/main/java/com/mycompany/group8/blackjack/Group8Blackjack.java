@@ -9,6 +9,13 @@ package com.mycompany.group8.blackjack;
  * @author suran, Mir Ali, Mohammded Rizwan
  */
 
+
+
+/**
+ * Separation of Concerns:
+ * - This is the controller handling the game loop and user interaction.
+ */
+
 import java.util.Scanner;
 
 // Game Controller: Separates game logic from models

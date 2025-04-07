@@ -10,7 +10,11 @@ package com.mycompany.group8.blackjack;
  */
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Encapsulation:
+ * - Internal list of cards is private.
+ * - All logic (e.g., Ace value) is handled inside.
+ */
 
 // Encapsulation: Hand manages its internal list of cards and value logic
 public class Hand {

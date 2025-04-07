@@ -8,6 +8,15 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+
+
+/**
+ * Inheritance:
+ * - Extends Player class.
+ * Strategy Pattern:
+ * - Accepts DealerStrategy to determine behavior.
+ */
+
 // Inherits from Player, uses Strategy Pattern
 public class Dealer extends Player {
     private final DealerStrategy strategy;

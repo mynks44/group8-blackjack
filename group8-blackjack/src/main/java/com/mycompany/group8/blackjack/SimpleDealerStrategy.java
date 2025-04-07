@@ -8,6 +8,12 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+
+/**
+ * Strategy Pattern (Implementation):
+ * - Dealer hits until reaching a value of 17 or more.
+ */
+
 // Strategy Pattern Implementation: Dealer hits if hand < 17
 public class SimpleDealerStrategy implements DealerStrategy {
     @Override

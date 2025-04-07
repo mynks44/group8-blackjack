@@ -8,6 +8,12 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+
+/**
+ * Object-Oriented Principle: Inheritance
+ * - Base class for both Player and Dealer.
+ */
+
 // Base class for Player and Dealer - Inheritance
 public class Player {
     protected String name;

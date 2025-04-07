@@ -9,6 +9,13 @@ package com.mycompany.group8.blackjack;
  * @author suran, Mohammed Rizwan, Mir Ali
  */
 
+
+/**
+ * Encapsulation:
+ * - Stores rank and suit.
+ * - Provides getters for read-only access.
+ */
+
 // Simple data class: Encapsulation of card properties
 public class Card {
     private final String suit;
