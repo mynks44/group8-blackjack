@@ -11,6 +11,8 @@ package com.mycompany.group8.blackjack;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// Encapsulation: Hand manages its internal list of cards and value logic
 public class Hand {
     private final List<Card> cards;
 
@@ -22,6 +24,8 @@ public class Hand {
         cards.add(card);
     }
 
+    
+    // Handles special Ace logic (1 or 11) to avoid busting
     public int getValue() {
         int value = 0;
         int aceCount = 0;
@@ -43,6 +47,7 @@ public class Hand {
             }
         }
 
+         // Adjust for Aces if value > 21
         while (value > 21 && aceCount > 0) {
             value -= 10;
             aceCount--;

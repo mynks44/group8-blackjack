@@ -8,6 +8,7 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+// Strategy Pattern Implementation: Dealer hits if hand < 17
 public class SimpleDealerStrategy implements DealerStrategy {
     @Override
     public boolean shouldHit(Hand hand) {

@@ -8,6 +8,7 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+// Inherits from Player, uses Strategy Pattern
 public class Dealer extends Player {
     private final DealerStrategy strategy;
 
@@ -16,6 +17,7 @@ public class Dealer extends Player {
         this.strategy = strategy;
     }
 
+    // Delegates decision to strategy
     public boolean shouldHit() {
         return strategy.shouldHit(hand);
     }

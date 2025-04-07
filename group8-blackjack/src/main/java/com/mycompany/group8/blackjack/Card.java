@@ -8,6 +8,8 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran, Mohammed Rizwan, Mir Ali
  */
+
+// Simple data class: Encapsulation of card properties
 public class Card {
     private final String suit;
     private final String rank;

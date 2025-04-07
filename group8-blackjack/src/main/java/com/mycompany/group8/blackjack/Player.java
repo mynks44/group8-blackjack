@@ -8,6 +8,7 @@ package com.mycompany.group8.blackjack;
  *
  * @author suran
  */
+// Base class for Player and Dealer - Inheritance
 public class Player {
     protected String name;
     protected Hand hand;
@@ -25,15 +26,7 @@ public class Player {
         return hand.getValue();
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Hand getHand() {
         return hand;
     }
 }
-
-
-
-

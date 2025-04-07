@@ -11,6 +11,7 @@ package com.mycompany.group8.blackjack;
 
 import java.util.Scanner;
 
+// Game Controller: Separates game logic from models
 public class Group8Blackjack {
     private final Deck deck;
     private final Player player;
@@ -18,9 +19,9 @@ public class Group8Blackjack {
     private final Scanner scanner;
 
     public Group8Blackjack() {
-        deck = Deck.getInstance(); 
+        deck = Deck.getInstance(); // Singleton
         player = new Player("Player");
-        dealer = new Dealer(new SimpleDealerStrategy());
+        dealer = new Dealer(new SimpleDealerStrategy()); // Strategy Pattern
         scanner = new Scanner(System.in);
     }
 
@@ -36,7 +37,7 @@ public class Group8Blackjack {
 
         while (playerTurn) {
             System.out.println("Player's Hand: " + player.getHand() + " (Value: " + player.getHandValue() + ")");
-            System.out.println("Dealer's Visible Card: " + dealer.getHand().getValue());
+            System.out.println("Dealer's Visible Card Value: " + dealer.getHand().getValue());
 
             if (player.getHandValue() > 21) {
                 System.out.println("Player busts! Dealer wins.");

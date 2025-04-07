@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author suran, Mir Ali, Mohammded Rizwan
  */
+// Singleton Pattern: Only one instance of Deck is allowed
 public final class Deck {
     private static Deck instance;
     private final List<Card> cards;
@@ -22,6 +23,7 @@ public final class Deck {
         shuffle();
     }
 
+    // Singleton Accessor
     public static Deck getInstance() {
         if (instance == null) {
             instance = new Deck();
